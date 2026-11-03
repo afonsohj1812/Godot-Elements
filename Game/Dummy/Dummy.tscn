@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bvxwktkbkbwog"]
+
+[ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Dummy/Dummy.png" id="1_r0wl6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0wl6"]
+atlas = ExtResource("1_r0wl6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0ss8"]
+atlas = ExtResource("1_r0wl6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvudq"]
+atlas = ExtResource("1_r0wl6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dfyn"]
+atlas = ExtResource("1_r0wl6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s3of"]
+atlas = ExtResource("1_r0wl6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnr6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0wl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0ss8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvudq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dfyn")
+}],
+"loop": 0,
+"name": &"Hit",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s3of")
+}],
+"loop": 0,
+"name": &"Idle",
+"speed": 16.0
+}]
+
+[node name="Dummy" type="Node2D" unique_id=573899154]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=732028988]
+sprite_frames = SubResource("SpriteFrames_nnr6g")
+animation = &"Hit"
+autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
+offset = Vector2(0, -12)

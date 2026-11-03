@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://77hsqats0ai"]
+
+[ext_resource type="Script" uid="uid://bfx2t6tftbred" path="res://Game/Game.gd" id="1_hqwdr"]
+[ext_resource type="PackedScene" uid="uid://bvxwktkbkbwog" path="res://Game/Dummy/Dummy.tscn" id="2_vrr3t"]
+
+[node name="Game" type="Node2D" unique_id=441822849]
+script = ExtResource("1_hqwdr")
+dummy = ExtResource("2_vrr3t")
