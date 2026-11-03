@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bvxwktkbkbwog"]
 
+[ext_resource type="Script" uid="uid://mvucbelgwmpc" path="res://Game/Dummy/Dummy.gd" id="1_bvudq"]
 [ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Dummy/Dummy.png" id="1_r0wl6"]
+[ext_resource type="PackedScene" uid="uid://c34siqlq606q7" path="res://Game/Dummy/Hurtbox/Hurtbox.tscn" id="2_o0ss8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0wl6"]
 atlas = ExtResource("1_r0wl6")
@@ -15,10 +17,6 @@ atlas = ExtResource("1_r0wl6")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dfyn"]
-atlas = ExtResource("1_r0wl6")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3s3of"]
 atlas = ExtResource("1_r0wl6")
 region = Rect2(96, 0, 32, 32)
 
@@ -38,24 +36,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_8dfyn")
 }],
 "loop": 0,
-"name": &"Hit",
-"speed": 16.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3s3of")
-}],
-"loop": 0,
-"name": &"Idle",
+"name": &"Damage",
 "speed": 16.0
 }]
 
-[node name="Dummy" type="Node2D" unique_id=573899154]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijymp"]
+size = Vector2(26, 24)
+
+[node name="Dummy" type="Node2D" unique_id=573899154 node_paths=PackedStringArray("sprite", "hurtbox")]
+script = ExtResource("1_bvudq")
+sprite = NodePath("Sprite")
+hurtbox = NodePath("Hurtbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=732028988]
 sprite_frames = SubResource("SpriteFrames_nnr6g")
-animation = &"Hit"
-autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
+animation = &"Damage"
+autoplay = "Damage"
 offset = Vector2(0, -12)
+
+[node name="Hurtbox" parent="." unique_id=212361335 instance=ExtResource("2_o0ss8")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox" unique_id=304009503]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_ijymp")
