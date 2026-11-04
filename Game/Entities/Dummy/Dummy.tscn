@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bvxwktkbkbwog"]
 
-[ext_resource type="Script" uid="uid://mvucbelgwmpc" path="res://Game/Dummy/Dummy.gd" id="1_bvudq"]
-[ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Dummy/Dummy.png" id="1_r0wl6"]
-[ext_resource type="PackedScene" uid="uid://c34siqlq606q7" path="res://Game/Dummy/Hurtbox/Hurtbox.tscn" id="2_o0ss8"]
+[ext_resource type="Script" uid="uid://mvucbelgwmpc" path="res://Game/Entities/Dummy/Dummy.gd" id="1_bvudq"]
+[ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Entities/Dummy/Dummy.png" id="1_r0wl6"]
+[ext_resource type="PackedScene" uid="uid://c34siqlq606q7" path="res://Game/Entities/Hurtbox/Hurtbox.tscn" id="2_o0ss8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0wl6"]
 atlas = ExtResource("1_r0wl6")
@@ -36,23 +36,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_8dfyn")
 }],
 "loop": 0,
-"name": &"Damage",
-"speed": 16.0
+"name": &"Hit",
+"speed": 32.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bvp2"]
+size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijymp"]
 size = Vector2(26, 24)
 
-[node name="Dummy" type="Node2D" unique_id=573899154 node_paths=PackedStringArray("sprite", "hurtbox")]
+[node name="Dummy" type="CharacterBody2D" unique_id=2044495049 node_paths=PackedStringArray("sprite", "hurtbox")]
 script = ExtResource("1_bvudq")
 sprite = NodePath("Sprite")
 hurtbox = NodePath("Hurtbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=732028988]
 sprite_frames = SubResource("SpriteFrames_nnr6g")
-animation = &"Damage"
-autoplay = "Damage"
+animation = &"Hit"
+autoplay = "Hit"
 offset = Vector2(0, -12)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=984446623]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_2bvp2")
 
 [node name="Hurtbox" parent="." unique_id=212361335 instance=ExtResource("2_o0ss8")]
 

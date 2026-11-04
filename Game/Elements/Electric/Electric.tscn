@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b71f5uumbubuq"]
+
+[ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="1_i7uju"]
+
+[node name="Electric" type="Node2D" unique_id=207734631]
+script = ExtResource("1_i7uju")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cne5sriqsb3h6"
-path="res://.godot/imported/Dummy.png-353eef5ca128df4ca03a2e034a6a9921.ctex"
+uid="uid://bauxmi7k82csv"
+path="res://.godot/imported/Cold.png-25698ed80a7183195ea92395550dc15e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Dummy/Dummy.png"
-dest_files=["res://.godot/imported/Dummy.png-353eef5ca128df4ca03a2e034a6a9921.ctex"]
+source_file="res://Game/Elements/Cold/Cold.png"
+dest_files=["res://.godot/imported/Cold.png-25698ed80a7183195ea92395550dc15e.ctex"]
 
 [params]
 

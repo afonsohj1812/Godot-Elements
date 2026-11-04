@@ -2,8 +2,9 @@ class_name Game extends Node2D
 
 
 @export var dummy: PackedScene
+@export var elements: Array[PackedScene]
 
-var attack: Attack = Attack.new()
+var currentElement: PackedScene
 
 
 func _ready() -> void:
@@ -19,17 +20,25 @@ func _input(event: InputEvent) -> void:
 		dummyScene.scale *= Vector2(-2 if mousePos.x < get_window().size.x / 2.0 else 2, 2)
 
 		add_child(dummyScene)
-		print("Spawned Dummy")
 	
 	if (event.is_action_pressed("Attack")):
 		var mousePos: Vector2 = get_global_mouse_position()
 
-		for child: Dummy in get_children():
-			var hurtbox: Hurtbox = child.get_node("Hurtbox")
-			var collision: CollisionShape2D = hurtbox.get_node("Collision")
-			if (collision.shape.get_rect().has_point(collision.to_local(mousePos))):
-				hurtbox.damage(attack)
-				print("Attacked Dummy")
+		for child: Node in get_children():
+			if (child is Dummy):
+				var hurtbox: Hurtbox = child.get_node("Hurtbox")
+				var collision: CollisionShape2D = hurtbox.get_node("Collision")
+				if (collision.shape.get_rect().has_point(collision.to_local(mousePos))):
+					child.takeDamage(1)
+					if (currentElement):
+						child.applyElement(currentElement.instantiate())
+	
+	if (event.is_action_pressed("Fire")):
+		currentElement = elements[0]
+	if (event.is_action_pressed("Electric")):
+		currentElement = elements[1]
+	if (event.is_action_pressed("Cold")):
+		currentElement = elements[2]
 
 
 func _process(_delta: float) -> void:
