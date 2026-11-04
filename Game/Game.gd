@@ -3,6 +3,7 @@ class_name Game extends Node2D
 
 @export var dummy: PackedScene
 @export var elements: Array[PackedScene]
+@export var elementSymbol: TextureRect
 
 var currentElement: PackedScene
 
@@ -34,11 +35,19 @@ func _input(event: InputEvent) -> void:
 						child.applyElement(currentElement.instantiate())
 	
 	if (event.is_action_pressed("Fire")):
-		currentElement = elements[0]
+		selectElement(elements[0])
 	if (event.is_action_pressed("Electric")):
-		currentElement = elements[1]
+		selectElement(elements[1])
 	if (event.is_action_pressed("Cold")):
-		currentElement = elements[2]
+		selectElement(elements[2])
+
+
+func selectElement(element: PackedScene) -> void:
+	currentElement = element
+
+	var preview: Element = element.instantiate()
+	elementSymbol.texture = preview.icon
+	preview.free()
 
 
 func _process(_delta: float) -> void:

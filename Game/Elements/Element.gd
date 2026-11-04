@@ -1,6 +1,7 @@
 class_name Element extends Node2D
 
 
+@export var icon: Texture2D
 @export var duration: float = 6
 @export var tickRate: float = 1
 

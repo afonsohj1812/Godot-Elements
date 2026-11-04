@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dyju06fmy81fo"]
 
 [ext_resource type="Script" uid="uid://boastslnikoic" path="res://Game/Elements/Fire/Fire.gd" id="1_wqsrw"]
+[ext_resource type="Texture2D" uid="uid://cumvd2s4c03tb" path="res://Game/Elements/Fire/Fire.png" id="2_di2a3"]
 
 [node name="Fire" type="Node2D" unique_id=868072546]
 script = ExtResource("1_wqsrw")
 damage = 1
+icon = ExtResource("2_di2a3")
 tickRate = 0.2
