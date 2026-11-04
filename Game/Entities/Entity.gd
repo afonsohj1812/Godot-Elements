@@ -1,5 +1,8 @@
 class_name Entity extends CharacterBody2D
 
+signal health_changed(health: int)
+signal damaged(damage: int)
+
 
 const GROUP: StringName = &"Entities"
 
@@ -9,11 +12,12 @@ const GROUP: StringName = &"Entities"
 
 @export var symbolOffset: Vector2 = Vector2(0, -32)
 
+var currentHealth: int
 var slows: Array[float] = []
 
 
 func _ready() -> void:
-	assert(hurtbox != null, "Entity needs a Hurtbox")
+	currentHealth = health
 	hurtbox.hit.connect(takeDamage)
 
 	add_to_group(Entity.GROUP)
@@ -24,13 +28,16 @@ func _physics_process(_delta: float) -> void:
 
 
 func takeDamage(damage: int) -> void:
-	if (health <= 0):
+	if (currentHealth <= 0):
 		return
 	
-	health -= damage
-	_on_hit(damage)
+	currentHealth = max(currentHealth - damage, 0)
+	
+	health_changed.emit(currentHealth)
+	damaged.emit(damage)
 
-	if (health <= 0):
+	_on_hit(damage)
+	if (currentHealth <= 0):
 		_on_death()
 
 

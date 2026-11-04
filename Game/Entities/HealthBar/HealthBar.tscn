@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bcp3gsmpgdwvg"]
+
+[ext_resource type="Script" uid="uid://7qehb4l7umc1" path="res://Game/Entities/HealthBar/HealthBar.gd" id="1_uaftx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijymp"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bvp2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i34g5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfdyt"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="HealthBar" type="Control" unique_id=205837222 node_paths=PackedStringArray("damage", "health")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 3.0
+pivot_offset_ratio = Vector2(0.5, 0)
+script = ExtResource("1_uaftx")
+damage = NodePath("Damage")
+health = NodePath("Health")
+drainTime = 0.5
+
+[node name="Damage" type="ProgressBar" parent="." unique_id=708845778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ijymp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2bvp2")
+value = 100.0
+show_percentage = false
+
+[node name="Health" type="ProgressBar" parent="." unique_id=1020258596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_i34g5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pfdyt")
+step = 0.0
+value = 100.0
+show_percentage = false

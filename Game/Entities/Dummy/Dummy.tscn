@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://mvucbelgwmpc" path="res://Game/Entities/Dummy/Dummy.gd" id="1_bvudq"]
 [ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Entities/Dummy/Dummy.png" id="1_r0wl6"]
 [ext_resource type="PackedScene" uid="uid://c34siqlq606q7" path="res://Game/Entities/Hurtbox/Hurtbox.tscn" id="2_o0ss8"]
+[ext_resource type="PackedScene" uid="uid://bcp3gsmpgdwvg" path="res://Game/Entities/HealthBar/HealthBar.tscn" id="4_iidrj"]
+[ext_resource type="PackedScene" uid="uid://xpdtpfce1diw" path="res://Game/Entities/DamageNumbers/DamageNumbers.tscn" id="4_o50nq"]
+[ext_resource type="FontFile" uid="uid://j3dv4on85x1l" path="res://Font.ttf" id="5_18b8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0wl6"]
 atlas = ExtResource("1_r0wl6")
@@ -46,6 +49,12 @@ size = Vector2(10, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijymp"]
 size = Vector2(26, 24)
 
+[sub_resource type="LabelSettings" id="LabelSettings_18b8n"]
+font = ExtResource("5_18b8n")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Dummy" type="CharacterBody2D" unique_id=2044495049 node_paths=PackedStringArray("sprite", "hurtbox")]
 script = ExtResource("1_bvudq")
 sprite = NodePath("Sprite")
@@ -67,3 +76,20 @@ shape = SubResource("RectangleShape2D_2bvp2")
 [node name="Collision" type="CollisionShape2D" parent="Hurtbox" unique_id=304009503]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_ijymp")
+
+[node name="DamageNumbers" parent="." unique_id=767649855 node_paths=PackedStringArray("entity") instance=ExtResource("4_o50nq")]
+position = Vector2(0, -24)
+entity = NodePath("..")
+labelSettings = SubResource("LabelSettings_18b8n")
+
+[node name="HealthBar" parent="." unique_id=205837222 node_paths=PackedStringArray("entity") instance=ExtResource("4_iidrj")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 2.0
+offset_right = 12.0
+offset_bottom = 5.0000005
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0, 0)
+entity = NodePath("..")
