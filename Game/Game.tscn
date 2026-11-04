@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b71f5uumbubuq" path="res://Game/Elements/Electric/Electric.tscn" id="4_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://cxxuk17oeam34" path="res://Game/Elements/Cold/Cold.tscn" id="5_fuqhk"]
 [ext_resource type="Texture2D" uid="uid://51tp1e8wv7bd" path="res://Game/Elements/Frame.png" id="6_ghvq8"]
-[ext_resource type="Texture2D" uid="uid://bauxmi7k82csv" path="res://Game/Elements/Cold/Cold.png" id="7_fuqhk"]
 
 [node name="Game" type="Node2D" unique_id=441822849 node_paths=PackedStringArray("elementSymbol")]
 script = ExtResource("1_hqwdr")
@@ -30,4 +29,3 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
-texture = ExtResource("7_fuqhk")

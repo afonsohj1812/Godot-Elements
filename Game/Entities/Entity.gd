@@ -7,6 +7,8 @@ const GROUP: StringName = &"Entities"
 @export var speed: float = 100
 @export var hurtbox: Hurtbox
 
+@export var symbolOffset: Vector2 = Vector2(0, -32)
+
 var slows: Array[float] = []
 
 

@@ -37,6 +37,13 @@ func _ready() -> void:
 	add_child(tickTimer)
 	tickTimer.start()
 
+	# Element Symbol Above Entity
+	var symbol: Sprite2D = Sprite2D.new()
+	symbol.position = entity.symbolOffset
+	symbol.scale.x = sign(entity.scale.x)
+	symbol.texture = icon
+	add_child(symbol)
+
 	start()
 
 
