@@ -19,6 +19,10 @@ func _ready() -> void:
 	add_to_group(Entity.GROUP)
 
 
+func _physics_process(_delta: float) -> void:
+	pass
+
+
 func takeDamage(damage: int) -> void:
 	if (health <= 0):
 		return

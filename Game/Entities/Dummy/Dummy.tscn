@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bvp2"]
-size = Vector2(16, 24)
+size = Vector2(10, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijymp"]
 size = Vector2(26, 24)
@@ -49,6 +49,7 @@ size = Vector2(26, 24)
 [node name="Dummy" type="CharacterBody2D" unique_id=2044495049 node_paths=PackedStringArray("sprite", "hurtbox")]
 script = ExtResource("1_bvudq")
 sprite = NodePath("Sprite")
+health = 100
 hurtbox = NodePath("Hurtbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=732028988]

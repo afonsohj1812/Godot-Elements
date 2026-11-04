@@ -7,6 +7,7 @@ class_name Element extends Node2D
 
 var entity: Entity
 var durationTimer: Timer
+var tickTimer: Timer
 
 
 func _ready() -> void:
@@ -21,21 +22,8 @@ func _ready() -> void:
 
 			child.stop() # TODO: Reaction
 
-	# Start Timers
-	durationTimer = Timer.new()
-	durationTimer.wait_time = duration
-	durationTimer.one_shot = true
-	durationTimer.timeout.connect(stop)
-	
-	add_child(durationTimer)
-	durationTimer.start()
-
-	var tickTimer: Timer = Timer.new()
-	tickTimer.wait_time = tickRate
-	tickTimer.timeout.connect(tick)
-	
-	add_child(tickTimer)
-	tickTimer.start()
+	durationTimer = addTimer(duration, stop, true)
+	tickTimer = addTimer(tickRate, tick)
 
 	# Element Symbol Above Entity
 	var symbol: Sprite2D = Sprite2D.new()
@@ -45,6 +33,18 @@ func _ready() -> void:
 	add_child(symbol)
 
 	start()
+
+
+func addTimer(time: float, callback: Callable, oneShot: bool = false) -> Timer:
+	var timer: Timer = Timer.new()
+	timer.wait_time = time
+	timer.one_shot = oneShot
+
+	timer.timeout.connect(callback)
+	add_child(timer)
+	
+	timer.start()
+	return timer
 
 
 func start() -> void:

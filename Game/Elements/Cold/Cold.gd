@@ -43,19 +43,20 @@ func _on_aura_entered(area: Area2D) -> void:
 
 func _on_aura_exited(area: Area2D) -> void:
 	var hurtbox: Hurtbox = area as Hurtbox
-	if (hurtbox == null or not slowed.has(hurtbox.owner)):
+	if (hurtbox == null or not is_instance_valid(hurtbox.owner) or not slowed.has(hurtbox.owner)):
 		return
 
 	release(hurtbox.owner)
 
 
 func _exit_tree() -> void:
-	for other in slowed.duplicate():
-		release(other)
+	for other in slowed:
+		if (is_instance_valid(other)):
+			other.slows.erase(auraSlow)
+
+	slowed.clear()
 
 
-func release(other) -> void:
-	if (is_instance_valid(other)):
-		other.slows.erase(auraSlow)
-
+func release(other: Entity) -> void:
+	other.slows.erase(auraSlow)
 	slowed.erase(other)

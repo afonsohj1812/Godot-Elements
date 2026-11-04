@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://51tp1e8wv7bd" path="res://Game/Elements/Frame.png" id="6_ghvq8"]
 
 [node name="Game" type="Node2D" unique_id=441822849 node_paths=PackedStringArray("elementSymbol")]
+y_sort_enabled = true
 script = ExtResource("1_hqwdr")
 dummy = ExtResource("2_vrr3t")
 elements = Array[PackedScene]([ExtResource("3_jxerj"), ExtResource("4_ghvq8"), ExtResource("5_fuqhk")])
@@ -20,7 +21,6 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 68.0
 offset_bottom = 68.0
-scale = Vector2(2, 2)
 texture = ExtResource("6_ghvq8")
 
 [node name="ElementSymbol" type="TextureRect" parent="CanvasLayer/ElementFrame" unique_id=2084084983]
