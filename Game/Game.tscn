@@ -13,6 +13,7 @@ script = ExtResource("1_hqwdr")
 dummy = ExtResource("2_vrr3t")
 elements = Array[PackedScene]([ExtResource("3_jxerj"), ExtResource("4_ghvq8"), ExtResource("5_fuqhk")])
 elementSymbol = NodePath("CanvasLayer/ElementFrame/ElementSymbol")
+currentElement = ExtResource("3_jxerj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518599472]
 

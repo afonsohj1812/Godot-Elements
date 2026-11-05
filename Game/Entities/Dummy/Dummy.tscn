@@ -58,7 +58,6 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Dummy" type="CharacterBody2D" unique_id=2044495049 node_paths=PackedStringArray("sprite", "hurtbox")]
 script = ExtResource("1_bvudq")
 sprite = NodePath("Sprite")
-health = 100
 hurtbox = NodePath("Hurtbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=732028988]
@@ -83,13 +82,8 @@ entity = NodePath("..")
 labelSettings = SubResource("LabelSettings_18b8n")
 
 [node name="HealthBar" parent="." unique_id=205837222 node_paths=PackedStringArray("entity") instance=ExtResource("4_iidrj")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -12.0
+offset_left = -8.0
 offset_top = 2.0
-offset_right = 12.0
-offset_bottom = 5.0000005
-grow_horizontal = 2
-pivot_offset_ratio = Vector2(0, 0)
+offset_right = 8.0
+offset_bottom = 4.0
 entity = NodePath("..")

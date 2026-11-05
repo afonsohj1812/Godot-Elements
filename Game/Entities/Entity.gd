@@ -6,18 +6,18 @@ signal damaged(damage: int)
 
 const GROUP: StringName = &"Entities"
 
-@export var health: int = 10
+@export var maxHealth: int = 10
 @export var speed: float = 100
 @export var hurtbox: Hurtbox
 
 @export var symbolOffset: Vector2 = Vector2(0, -32)
 
-var currentHealth: int
+var health: int
 var slows: Array[float] = []
 
 
 func _ready() -> void:
-	currentHealth = health
+	health = maxHealth
 	hurtbox.hit.connect(takeDamage)
 
 	add_to_group(Entity.GROUP)
@@ -28,16 +28,16 @@ func _physics_process(_delta: float) -> void:
 
 
 func takeDamage(damage: int) -> void:
-	if (currentHealth <= 0):
+	if (health <= 0):
 		return
 	
-	currentHealth = max(currentHealth - damage, 0)
+	health = max(health - damage, 0)
 	
-	health_changed.emit(currentHealth)
+	health_changed.emit(health)
 	damaged.emit(damage)
 
 	_on_hit(damage)
-	if (currentHealth <= 0):
+	if (health <= 0):
 		_on_death()
 
 

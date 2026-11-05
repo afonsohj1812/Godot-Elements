@@ -9,7 +9,7 @@ var currentElement: PackedScene
 
 
 func _ready() -> void:
-	pass
+	selectElement(elements[0])
 
 
 func _input(event: InputEvent) -> void:
@@ -48,7 +48,3 @@ func selectElement(element: PackedScene) -> void:
 	var preview: Element = element.instantiate()
 	elementSymbol.texture = preview.icon
 	preview.free()
-
-
-func _process(_delta: float) -> void:
-	pass

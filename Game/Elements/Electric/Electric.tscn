@@ -5,4 +5,5 @@
 
 [node name="Electric" type="Node2D" unique_id=207734631]
 script = ExtResource("1_i7uju")
+damage = 3
 icon = ExtResource("2_tu5u6")

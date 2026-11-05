@@ -5,6 +5,6 @@
 
 [node name="Fire" type="Node2D" unique_id=868072546]
 script = ExtResource("1_wqsrw")
-damage = 1
+damage = 2
 icon = ExtResource("2_di2a3")
 tickRate = 0.2
