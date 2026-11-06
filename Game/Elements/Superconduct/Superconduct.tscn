@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cyy3cjlht233k"]
+
+[ext_resource type="Script" uid="uid://qp1877un6suq" path="res://Game/Elements/Superconduct/Superconduct.gd" id="1_k2p4n"]
+[ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="2_jp6m3"]
+[ext_resource type="Script" uid="uid://cdv4fylq6h83l" path="res://Game/Elements/Cold/Cold.gd" id="3_peq7j"]
+
+[node name="Superconduct" type="Node2D" unique_id=1391375205]
+script = ExtResource("1_k2p4n")
+first = ExtResource("2_jp6m3")
+second = ExtResource("3_peq7j")
+duration = 0.5

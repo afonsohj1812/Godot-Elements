@@ -10,17 +10,12 @@ var durationTimer: Timer
 var tickTimer: Timer
 
 
+static func create(script: GDScript) -> Element:
+	return load(script.resource_path.get_basename() + ".tscn").instantiate()
+
+
 func _ready() -> void:
 	entity = get_parent()
-
-	for child: Node in entity.get_children():
-		if (child is Element and child != self and not child.is_queued_for_deletion()):
-			if (child.get_script() == get_script()):
-				child.durationTimer.start()
-				queue_free()
-				return
-
-			child.stop() # TODO: Reaction
 
 	durationTimer = addTimer(duration, stop, true)
 	tickTimer = addTimer(tickRate, tick)
@@ -48,7 +43,7 @@ func addTimer(time: float, callback: Callable, oneShot: bool = false) -> Timer:
 
 
 func start() -> void:
-	pass
+	tick()
 
 
 func tick() -> void:
@@ -57,6 +52,10 @@ func tick() -> void:
 
 func stop() -> void:
 	queue_free()
+
+
+func refresh() -> void:
+	durationTimer.start()
 
 
 func nearby(radius: float) -> Array[Entity]:

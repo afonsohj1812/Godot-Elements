@@ -56,6 +56,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Dummy" type="CharacterBody2D" unique_id=2044495049 node_paths=PackedStringArray("sprite", "hurtbox")]
+collision_mask = 0
 script = ExtResource("1_bvudq")
 sprite = NodePath("Sprite")
 hurtbox = NodePath("Hurtbox")

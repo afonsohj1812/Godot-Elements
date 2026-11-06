@@ -2,18 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bfx2t6tftbred" path="res://Game/Game.gd" id="1_hqwdr"]
 [ext_resource type="PackedScene" uid="uid://bvxwktkbkbwog" path="res://Game/Entities/Dummy/Dummy.tscn" id="2_vrr3t"]
-[ext_resource type="PackedScene" uid="uid://dyju06fmy81fo" path="res://Game/Elements/Fire/Fire.tscn" id="3_jxerj"]
-[ext_resource type="PackedScene" uid="uid://b71f5uumbubuq" path="res://Game/Elements/Electric/Electric.tscn" id="4_ghvq8"]
-[ext_resource type="PackedScene" uid="uid://cxxuk17oeam34" path="res://Game/Elements/Cold/Cold.tscn" id="5_fuqhk"]
+[ext_resource type="Script" uid="uid://boastslnikoic" path="res://Game/Elements/Fire/Fire.gd" id="3_ghvq8"]
+[ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="4_fuqhk"]
+[ext_resource type="Script" uid="uid://cdv4fylq6h83l" path="res://Game/Elements/Cold/Cold.gd" id="5_oscxy"]
 [ext_resource type="Texture2D" uid="uid://51tp1e8wv7bd" path="res://Game/Elements/Frame.png" id="6_ghvq8"]
 
 [node name="Game" type="Node2D" unique_id=441822849 node_paths=PackedStringArray("elementSymbol")]
 y_sort_enabled = true
 script = ExtResource("1_hqwdr")
 dummy = ExtResource("2_vrr3t")
-elements = Array[PackedScene]([ExtResource("3_jxerj"), ExtResource("4_ghvq8"), ExtResource("5_fuqhk")])
+elements = Array[GDScript]([ExtResource("3_ghvq8"), ExtResource("4_fuqhk"), ExtResource("5_oscxy")])
 elementSymbol = NodePath("CanvasLayer/ElementFrame/ElementSymbol")
-currentElement = ExtResource("3_jxerj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518599472]
 

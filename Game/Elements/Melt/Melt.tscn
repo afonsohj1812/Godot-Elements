@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bfsqy3iu68lf5"]
+
+[ext_resource type="Script" uid="uid://c52higvxcxn07" path="res://Game/Elements/Melt/Melt.gd" id="1_o2k5s"]
+[ext_resource type="Script" uid="uid://boastslnikoic" path="res://Game/Elements/Fire/Fire.gd" id="2_ge3nn"]
+[ext_resource type="Script" uid="uid://cdv4fylq6h83l" path="res://Game/Elements/Cold/Cold.gd" id="3_uedxa"]
+
+[node name="Melt" type="Node2D" unique_id=771832897]
+script = ExtResource("1_o2k5s")
+first = ExtResource("2_ge3nn")
+second = ExtResource("3_uedxa")

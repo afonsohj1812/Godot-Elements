@@ -2,10 +2,10 @@ class_name Game extends Node2D
 
 
 @export var dummy: PackedScene
-@export var elements: Array[PackedScene]
+@export var elements: Array[GDScript]
 @export var elementSymbol: TextureRect
 
-var currentElement: PackedScene
+var currentElement: GDScript
 
 
 func _ready() -> void:
@@ -30,9 +30,8 @@ func _input(event: InputEvent) -> void:
 				var hurtbox: Hurtbox = child.get_node("Hurtbox")
 				var collision: CollisionShape2D = hurtbox.get_node("Collision")
 				if (collision.shape.get_rect().has_point(collision.to_local(mousePos))):
-					child.takeDamage(1)
 					if (currentElement):
-						child.applyElement(currentElement.instantiate())
+						child.applyElement(currentElement)
 	
 	if (event.is_action_pressed("Fire")):
 		selectElement(elements[0])
@@ -42,9 +41,7 @@ func _input(event: InputEvent) -> void:
 		selectElement(elements[2])
 
 
-func selectElement(element: PackedScene) -> void:
+func selectElement(element: GDScript) -> void:
 	currentElement = element
-
-	var preview: Element = element.instantiate()
-	elementSymbol.texture = preview.icon
-	preview.free()
+	
+	elementSymbol.texture = load(element.resource_path.get_basename() + ".png")

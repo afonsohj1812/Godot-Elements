@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dfwl3bu6fpv4r"]
+
+[ext_resource type="Script" uid="uid://c2omg2n7pvg18" path="res://Game/Elements/Overload/Overload.gd" id="1_0ta6t"]
+[ext_resource type="Script" uid="uid://boastslnikoic" path="res://Game/Elements/Fire/Fire.gd" id="2_b7ljw"]
+[ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="3_344d8"]
+
+[node name="Overload" type="Node2D" unique_id=868544957]
+script = ExtResource("1_0ta6t")
+first = ExtResource("2_b7ljw")
+second = ExtResource("3_344d8")

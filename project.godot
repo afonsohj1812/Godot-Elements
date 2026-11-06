@@ -21,6 +21,7 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

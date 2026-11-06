@@ -6,7 +6,7 @@ signal damaged(damage: int)
 
 const GROUP: StringName = &"Entities"
 
-@export var maxHealth: int = 10
+@export var maxHealth: int = 100
 @export var speed: float = 100
 @export var hurtbox: Hurtbox
 
@@ -49,7 +49,24 @@ func _on_death() -> void:
 	queue_free()
 
 
-func applyElement(element: Element) -> void:
+func applyElement(_element: GDScript) -> void:
+	var element: Element = Element.create(_element)
+
+	for other: Node in get_children():
+		if (other is Element and other is not CombinedElement and not other.is_queued_for_deletion()):
+			var combined: CombinedElement = null
+			if (other.get_script() == element.get_script()):
+				other.refresh()
+			else:
+				combined = CombinedElement.combine(other, element)
+				other.stop()
+
+			element.free()
+			if (combined):
+				add_child(combined)
+				
+			return
+
 	add_child(element)
 
 
