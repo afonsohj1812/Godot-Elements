@@ -6,3 +6,4 @@
 [node name="Cold" type="Node2D" unique_id=2047701033]
 script = ExtResource("1_1pcvf")
 icon = ExtResource("2_sq6ht")
+color = Color(0.41568628, 0.84705883, 1, 1)

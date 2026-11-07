@@ -7,3 +7,4 @@
 script = ExtResource("1_i7uju")
 damage = 3
 icon = ExtResource("2_tu5u6")
+color = Color(0.627451, 0.29803923, 0.9411765, 1)

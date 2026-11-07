@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cne5sriqsb3h6" path="res://Game/Entities/Dummy/Dummy.png" id="1_r0wl6"]
 [ext_resource type="PackedScene" uid="uid://c34siqlq606q7" path="res://Game/Entities/Hurtbox/Hurtbox.tscn" id="2_o0ss8"]
 [ext_resource type="PackedScene" uid="uid://bcp3gsmpgdwvg" path="res://Game/Entities/HealthBar/HealthBar.tscn" id="4_iidrj"]
-[ext_resource type="PackedScene" uid="uid://xpdtpfce1diw" path="res://Game/Entities/DamageNumbers/DamageNumbers.tscn" id="4_o50nq"]
+[ext_resource type="PackedScene" uid="uid://xpdtpfce1diw" path="res://Game/Entities/FloatingText/FloatingText.tscn" id="4_o50nq"]
 [ext_resource type="FontFile" uid="uid://j3dv4on85x1l" path="res://Font.ttf" id="5_18b8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0wl6"]
@@ -51,6 +51,12 @@ size = Vector2(26, 24)
 
 [sub_resource type="LabelSettings" id="LabelSettings_18b8n"]
 font = ExtResource("5_18b8n")
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxhsl"]
+font = ExtResource("5_18b8n")
 font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -77,10 +83,20 @@ shape = SubResource("RectangleShape2D_2bvp2")
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_ijymp")
 
-[node name="DamageNumbers" parent="." unique_id=767649855 node_paths=PackedStringArray("entity") instance=ExtResource("4_o50nq")]
+[node name="FloatingText" parent="." unique_id=767649855 node_paths=PackedStringArray("entity") instance=ExtResource("4_o50nq")]
 position = Vector2(0, -24)
 entity = NodePath("..")
 labelSettings = SubResource("LabelSettings_18b8n")
+
+[node name="ReactionText" parent="." unique_id=1085382456 node_paths=PackedStringArray("entity") instance=ExtResource("4_o50nq")]
+position = Vector2(0, -24)
+entity = NodePath("..")
+labelSettings = SubResource("LabelSettings_mxhsl")
+rise = 32.0
+time = 0.75
+spread = 0.0
+drift = 0.0
+event = &"reacted"
 
 [node name="HealthBar" parent="." unique_id=205837222 node_paths=PackedStringArray("entity") instance=ExtResource("4_iidrj")]
 offset_left = -8.0

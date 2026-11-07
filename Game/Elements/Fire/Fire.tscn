@@ -7,4 +7,5 @@
 script = ExtResource("1_wqsrw")
 damage = 2
 icon = ExtResource("2_di2a3")
+color = Color(1, 0.47843137, 0.101960786, 1)
 tickRate = 0.2

@@ -2,6 +2,7 @@ class_name Entity extends CharacterBody2D
 
 signal health_changed(health: int)
 signal damaged(damage: int)
+signal reacted(reaction: String, color: Color)
 
 
 const GROUP: StringName = &"Entities"
@@ -61,10 +62,11 @@ func applyElement(_element: GDScript) -> void:
 				combined = CombinedElement.combine(other, element)
 				other.stop()
 
-			element.free()
 			if (combined):
+				reacted.emit(combined.get_script().get_global_name(), element.color)
 				add_child(combined)
 				
+			element.free()
 			return
 
 	add_child(element)
