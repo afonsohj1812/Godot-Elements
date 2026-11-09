@@ -4,6 +4,9 @@ class_name Hurtbox extends Area2D
 signal hit(attack: Attack)
 
 
+var entity: Entity
+
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 

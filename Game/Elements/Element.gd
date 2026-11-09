@@ -18,7 +18,6 @@ static func create(script: GDScript) -> Element:
 
 
 func _ready() -> void:
-	entity = get_parent()
 	entity.died.connect(stop)
 
 	durationTimer = addTimer(duration, stop, true)
@@ -54,6 +53,9 @@ func tick() -> void:
 
 
 func stop() -> void:
+	if (is_queued_for_deletion()):
+		return
+
 	for emitter: GPUParticles2D in particles:
 		if (not emitter.one_shot):
 			emitter.emitting = false

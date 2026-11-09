@@ -27,26 +27,27 @@ func start() -> void:
 
 
 func stop() -> void:
-	entity.slows.erase(slow)
-	
+	if (not is_queued_for_deletion()):
+		entity.slows.erase(slow)
+
 	super.stop()
 
 
 func _on_aura_entered(area: Area2D) -> void:
 	var hurtbox: Hurtbox = area as Hurtbox
-	if (hurtbox == null or hurtbox.owner == entity):
+	if (hurtbox == null or hurtbox.entity == entity):
 		return
 
-	hurtbox.owner.slows.append(auraSlow)
-	slowed.append(hurtbox.owner)
+	hurtbox.entity.slows.append(auraSlow)
+	slowed.append(hurtbox.entity)
 
 
 func _on_aura_exited(area: Area2D) -> void:
 	var hurtbox: Hurtbox = area as Hurtbox
-	if (hurtbox == null or not is_instance_valid(hurtbox.owner) or not slowed.has(hurtbox.owner)):
+	if (hurtbox == null or not is_instance_valid(hurtbox.entity) or not slowed.has(hurtbox.entity)):
 		return
 
-	release(hurtbox.owner)
+	release(hurtbox.entity)
 
 
 func _exit_tree() -> void:

@@ -20,6 +20,8 @@ var slows: Array[float] = []
 
 func _ready() -> void:
 	health = maxHealth
+	
+	hurtbox.entity = self
 	hurtbox.hit.connect(takeAttack)
 
 	add_to_group(Entity.GROUP)
@@ -62,6 +64,7 @@ func applyElement(_element: GDScript) -> void:
 		return
 
 	var element: Element = Element.create(_element)
+	element.entity = self
 
 	for other: Node in get_children():
 		if (other is Element and other is not CombinedElement and not other.is_queued_for_deletion()):
@@ -72,9 +75,12 @@ func applyElement(_element: GDScript) -> void:
 
 			var combined: CombinedElement = CombinedElement.combine(other, element)
 			if (combined):
+				combined.entity = self
+				
 				other.stop()
 				reacted.emit(combined.get_script().get_global_name(), element.color)
 				add_child(combined)
+
 				element.free()
 				return
 

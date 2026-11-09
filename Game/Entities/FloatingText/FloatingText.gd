@@ -20,8 +20,8 @@ func _on_event(value: Variant, color: Color = Color.WHITE) -> void:
 	var label: Label = Label.new()
 	label.text = str(value)
 
-	labelSettings.font_color = color
-	label.label_settings = labelSettings
+	label.label_settings = labelSettings.duplicate()
+	label.label_settings.font_color = color
 	label.z_index = 1
 	(container if container else get_tree().current_scene).add_child(label)
 
