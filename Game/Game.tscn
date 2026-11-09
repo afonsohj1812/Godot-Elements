@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://77hsqats0ai"]
 
 [ext_resource type="Script" uid="uid://bfx2t6tftbred" path="res://Game/Game.gd" id="1_hqwdr"]
+[ext_resource type="Script" uid="uid://i1kixkxnc6ef" path="res://Game/Entities/Attack.gd" id="2_fuqhk"]
 [ext_resource type="PackedScene" uid="uid://bvxwktkbkbwog" path="res://Game/Entities/Dummy/Dummy.tscn" id="2_vrr3t"]
 [ext_resource type="Script" uid="uid://boastslnikoic" path="res://Game/Elements/Fire/Fire.gd" id="3_ghvq8"]
 [ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="4_fuqhk"]
 [ext_resource type="Script" uid="uid://cdv4fylq6h83l" path="res://Game/Elements/Cold/Cold.gd" id="5_oscxy"]
 [ext_resource type="Texture2D" uid="uid://51tp1e8wv7bd" path="res://Game/Elements/Frame.png" id="6_ghvq8"]
 
+[sub_resource type="Resource" id="Resource_18b8n"]
+script = ExtResource("2_fuqhk")
+metadata/_custom_type_script = "uid://i1kixkxnc6ef"
+
 [node name="Game" type="Node2D" unique_id=441822849 node_paths=PackedStringArray("elementSymbol")]
 y_sort_enabled = true
 script = ExtResource("1_hqwdr")
+attack = SubResource("Resource_18b8n")
 dummy = ExtResource("2_vrr3t")
 elements = Array[GDScript]([ExtResource("3_ghvq8"), ExtResource("4_fuqhk"), ExtResource("5_oscxy")])
 elementSymbol = NodePath("CanvasLayer/ElementFrame/ElementSymbol")

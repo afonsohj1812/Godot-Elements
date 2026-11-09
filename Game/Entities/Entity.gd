@@ -20,7 +20,7 @@ var slows: Array[float] = []
 
 func _ready() -> void:
 	health = maxHealth
-	hurtbox.hit.connect(takeDamage)
+	hurtbox.hit.connect(takeAttack)
 
 	add_to_group(Entity.GROUP)
 
@@ -29,10 +29,15 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 
+func takeAttack(attack: Attack) -> void:
+	takeDamage(attack.getDamage())
+	applyElement(attack.getElement())
+
+
 func takeDamage(damage: int) -> void:
 	if (health <= 0):
 		return
-	
+
 	health = max(health - damage, 0)
 	
 	health_changed.emit(health)
@@ -53,6 +58,9 @@ func _on_death() -> void:
 
 
 func applyElement(_element: GDScript) -> void:
+	if (health <= 0 or !_element):
+		return
+
 	var element: Element = Element.create(_element)
 
 	for other: Node in get_children():

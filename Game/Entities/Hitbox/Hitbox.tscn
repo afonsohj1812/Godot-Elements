@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://bibakh0h3f7cl"]
 
 [ext_resource type="Script" uid="uid://bjnry48w0sxgw" path="res://Game/Entities/Hitbox/Hitbox.gd" id="1_yn1i3"]
+[ext_resource type="Script" uid="uid://i1kixkxnc6ef" path="res://Game/Entities/Attack.gd" id="2_yb6ln"]
+
+[sub_resource type="Resource" id="Resource_mxhsl"]
+script = ExtResource("2_yb6ln")
+metadata/_custom_type_script = "uid://i1kixkxnc6ef"
 
 [node name="Hitbox" type="Area2D" unique_id=289485151]
 script = ExtResource("1_yn1i3")
+attack = SubResource("Resource_mxhsl")
