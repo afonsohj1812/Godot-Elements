@@ -2,6 +2,7 @@ class_name Entity extends CharacterBody2D
 
 signal health_changed(health: int)
 signal damaged(damage: int)
+signal died
 signal reacted(reaction: String, color: Color)
 
 
@@ -40,6 +41,7 @@ func takeDamage(damage: int) -> void:
 	_on_hit(damage)
 	if (health <= 0):
 		_on_death()
+		died.emit()
 
 
 func _on_hit(_damage: int) -> void:
@@ -55,19 +57,18 @@ func applyElement(_element: GDScript) -> void:
 
 	for other: Node in get_children():
 		if (other is Element and other is not CombinedElement and not other.is_queued_for_deletion()):
-			var combined: CombinedElement = null
 			if (other.get_script() == element.get_script()):
 				other.refresh()
-			else:
-				combined = CombinedElement.combine(other, element)
-				other.stop()
+				element.free()
+				return
 
+			var combined: CombinedElement = CombinedElement.combine(other, element)
 			if (combined):
+				other.stop()
 				reacted.emit(combined.get_script().get_global_name(), element.color)
 				add_child(combined)
-				
-			element.free()
-			return
+				element.free()
+				return
 
 	add_child(element)
 

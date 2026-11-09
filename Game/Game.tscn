@@ -14,6 +14,9 @@ dummy = ExtResource("2_vrr3t")
 elements = Array[GDScript]([ExtResource("3_ghvq8"), ExtResource("4_fuqhk"), ExtResource("5_oscxy")])
 elementSymbol = NodePath("CanvasLayer/ElementFrame/ElementSymbol")
 
+[node name="Camera" type="Camera2D" parent="." unique_id=892030078]
+zoom = Vector2(2, 2)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518599472]
 
 [node name="ElementFrame" type="TextureRect" parent="CanvasLayer" unique_id=1439510970]

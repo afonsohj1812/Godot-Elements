@@ -4,8 +4,39 @@
 [ext_resource type="Script" uid="uid://cmp0y3tvctwln" path="res://Game/Elements/Electric/Electric.gd" id="2_jp6m3"]
 [ext_resource type="Script" uid="uid://cdv4fylq6h83l" path="res://Game/Elements/Cold/Cold.gd" id="3_peq7j"]
 
-[node name="Superconduct" type="Node2D" unique_id=1391375205]
+[sub_resource type="Gradient" id="Gradient_jp6m3"]
+offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+colors = PackedColorArray(0.627451, 0.29803923, 0.9411765, 0, 0.627451, 0.29803923, 0.9411765, 1, 0.41568628, 0.84705883, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 4
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3mixc"]
+gradient = SubResource("Gradient_jp6m3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jp6m3"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_3mixc")
+
+[node name="Superconduct" type="Node2D" unique_id=1391375205 node_paths=PackedStringArray("implosion", "particles")]
 script = ExtResource("1_k2p4n")
+implosion = NodePath("Implosion")
 first = ExtResource("2_jp6m3")
 second = ExtResource("3_peq7j")
-duration = 0.5
+particles = [NodePath("Implosion")]
+duration = 1.0
+
+[node name="Implosion" type="GPUParticles2D" parent="." unique_id=1089988420]
+position = Vector2(0, -12)
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jp6m3")

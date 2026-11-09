@@ -3,6 +3,8 @@ class_name Element extends Node2D
 
 @export var icon: Texture2D
 @export var color: Color
+@export var particles: Array[GPUParticles2D]
+
 @export var duration: float = 6
 @export var tickRate: float = 1
 
@@ -17,11 +19,11 @@ static func create(script: GDScript) -> Element:
 
 func _ready() -> void:
 	entity = get_parent()
+	entity.died.connect(stop)
 
 	durationTimer = addTimer(duration, stop, true)
 	tickTimer = addTimer(tickRate, tick)
 
-	# Element Symbol Above Entity
 	var symbol: Sprite2D = Sprite2D.new()
 	symbol.position = entity.symbolOffset
 	symbol.scale.x = sign(entity.scale.x)
@@ -52,6 +54,12 @@ func tick() -> void:
 
 
 func stop() -> void:
+	for emitter: GPUParticles2D in particles:
+		if (not emitter.one_shot):
+			emitter.emitting = false
+		emitter.reparent(entity if entity.health > 0 else entity.get_parent())
+		get_tree().create_timer(emitter.lifetime).timeout.connect(emitter.queue_free)
+
 	queue_free()
 
 

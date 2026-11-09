@@ -51,13 +51,11 @@ size = Vector2(26, 24)
 
 [sub_resource type="LabelSettings" id="LabelSettings_18b8n"]
 font = ExtResource("5_18b8n")
-font_size = 24
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxhsl"]
 font = ExtResource("5_18b8n")
-font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
@@ -87,12 +85,13 @@ shape = SubResource("RectangleShape2D_ijymp")
 position = Vector2(0, -24)
 entity = NodePath("..")
 labelSettings = SubResource("LabelSettings_18b8n")
+rise = 12.0
 
 [node name="ReactionText" parent="." unique_id=1085382456 node_paths=PackedStringArray("entity") instance=ExtResource("4_o50nq")]
 position = Vector2(0, -24)
 entity = NodePath("..")
 labelSettings = SubResource("LabelSettings_mxhsl")
-rise = 32.0
+rise = 16.0
 time = 0.75
 spread = 0.0
 drift = 0.0

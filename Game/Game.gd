@@ -18,7 +18,6 @@ func _input(event: InputEvent) -> void:
 
 		var dummyScene: Node2D = dummy.instantiate()
 		dummyScene.position = mousePos
-		dummyScene.scale *= 2
 
 		add_child(dummyScene)
 	
