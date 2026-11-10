@@ -17,7 +17,6 @@ func _input(event: InputEvent) -> void:
 
 		var dummyScene: Node2D = dummy.instantiate()
 		dummyScene.position = mousePos
-
 		add_child(dummyScene)
 	
 	if (event.is_action_pressed("Attack")):

@@ -72,7 +72,7 @@ func refresh() -> void:
 func nearby(radius: float) -> Array[Entity]:
 	var entities: Array[Entity] = []
 	for other: Entity in get_tree().get_nodes_in_group(Entity.GROUP):
-		if (other != entity and other.global_position.distance_to(entity.global_position) <= radius):
+		if (other != entity and other.global_position.distance_to(global_position) <= radius):
 			entities.append(other)
 
 	entities.sort_custom(isCloser)
@@ -80,4 +80,4 @@ func nearby(radius: float) -> Array[Entity]:
 
 
 func isCloser(a: Entity, b: Entity) -> bool:
-	return a.global_position.distance_to(entity.global_position) < b.global_position.distance_to(entity.global_position)
+	return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position)

@@ -36,5 +36,15 @@ func start() -> void:
 
 func _physics_process(delta: float) -> void:
 	for other: Entity in nearby(radius):
-		if (other.global_position.distance_to(entity.global_position) > minDistance):
-			other.move_and_collide(other.global_position.direction_to(entity.global_position) * strength * delta)
+		if (other.global_position.distance_to(global_position) > minDistance):
+			other.move_and_collide(other.global_position.direction_to(global_position) * strength * delta)
+
+
+func stop() -> void:
+	if (not is_instance_valid(entity)):
+		queue_free()
+	elif (entity.health <= 0):
+		reparent.call_deferred(entity.get_parent())
+		entity = null
+	else:
+		super.stop()
